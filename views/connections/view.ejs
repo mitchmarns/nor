@@ -1,0 +1,77 @@
+<div class="container p-4 d-flex">
+  <!-- Songs Sidebar -->
+  <aside class="songs-sidebar">
+    <h4 class="mb-2 text-center">Playlist</h4>
+    <div class="songs-list">
+      <% if (connection.songs && connection.songs.length) { %>
+        <% connection.songs.forEach(function(song) { %>
+          <div class="song-embed mb-3">
+            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/<%= song.spotifyUrl.split('/').pop() %>?utm_source=generator" width="100%" height="80" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+          </div>
+        <% }) %>
+      <% } else { %>
+        <div class="text-center muted">No songs added yet.</div>
+      <% } %>
+    </div>
+    <button class="btn btn-primary mt-3 w-full" id="add-song-btn">
+      <i class="ph ph-plus"></i> Add Song
+    </button>
+  </aside>
+
+  <!-- Main Content -->
+  <div class="flex-1 px-4">
+    <div class="relationship-header mb-4">
+      <img src="<%= connection.character.avatarUrl || '/img/default-character.png' %>" alt="<%= connection.character.name %>" class="avatar">
+      <span class="relationship-names">
+        <strong><%= connection.character.name %></strong>
+        <span class="connection-arrow">⇄</span>
+        <strong><%= connection.connectedCharacter.name %></strong>
+      </span>
+      <img src="<%= connection.connectedCharacter.avatarUrl || '/img/default-character.png' %>" alt="<%= connection.connectedCharacter.name %>" class="avatar">
+    </div>
+    <div class="relationship-details mt-4">
+      <h3 class="text-uppercase">Relationship: <%= connection.relationship %></h3>
+      <% if (connection.details) { %>
+        <p><%= connection.details %></p>
+      <% } %>
+    </div>
+    <a href="/characters/<%= connection.character.id %>" class="btn btn-outline mt-4">Back to <%= connection.character.name %></a>
+  </div>
+</div>
+
+<!-- Add Song Modal -->
+<div id="add-song-modal" class="modal">
+  <div class="modal-content">
+    <span class="close" id="close-add-song">&times;</span>
+    <h3>Add Spotify Song</h3>
+    <form method="POST" action="/connections/<%= connection.id %>/songs/add" id="add-song-form">
+      <div class="form-group">
+        <label for="spotifyUrl">Spotify Song Link</label>
+        <input type="url" id="spotifyUrl" name="spotifyUrl" class="form-control" required placeholder="https://open.spotify.com/track/...">
+      </div>
+      <button type="submit" class="btn btn-primary">Add Song</button>
+    </form>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const addSongBtn = document.getElementById('add-song-btn');
+    const addSongModal = document.getElementById('add-song-modal');
+    const closeAddSong = document.getElementById('close-add-song');
+
+    if (addSongBtn && addSongModal && closeAddSong) {
+      addSongBtn.addEventListener('click', () => {
+        addSongModal.style.display = 'block';
+      });
+      closeAddSong.addEventListener('click', () => {
+        addSongModal.style.display = 'none';
+      });
+      window.addEventListener('click', (event) => {
+        if (event.target === addSongModal) {
+          addSongModal.style.display = 'none';
+        }
+      });
+    }
+  });
+</script>

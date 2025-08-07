@@ -1,0 +1,228 @@
+<div class="dashboard-hero">
+  <h1 class="dashboard-welcome page-title">EDIT CHARACTER</h1>
+</div>
+
+<div class="row">
+  <div class="col-12 col-md-10 mx-auto">
+    <form action="/characters/<%= character.id %>/edit" method="POST" class="card p-4">
+      <div class="mb-4">
+        <h2 class="mb-2 card-title">Edit Character Details</h2>
+      </div>
+      <!-- Basics -->
+      <div class="form-row mb-3">
+        <div class="col">
+          <label for="name" class="card-info-label">Name</label>
+          <input type="text" id="name" name="name" class="form-control" value="<%= character.name %>" required>
+        </div>
+        <div class="col">
+          <label for="nickname" class="card-info-label">Nickname</label>
+          <input type="text" id="nickname" name="nickname" class="form-control" value="<%= character.nickname %>">
+        </div>
+        <div class="col">
+          <label for="age" class="card-info-label">Age</label>
+          <input type="number" id="age" name="age" class="form-control" min="0" value="<%= character.age %>">
+        </div>
+      </div>
+      <div class="form-row mb-3">
+        <div class="col">
+          <label for="gender" class="card-info-label">Gender</label>
+          <input type="text" id="gender" name="gender" class="form-control" value="<%= character.gender %>">
+        </div>
+        <div class="col">
+          <label for="birthday" class="card-info-label">Birthday</label>
+          <input type="date" id="birthday" name="birthday" class="form-control" value="<%= character.birthday ? character.birthday.toISOString().substring(0,10) : '' %>">
+        </div>
+        <div class="col">
+          <label for="zodiac" class="card-info-label">Zodiac</label>
+          <input type="text" id="zodiac" name="zodiac" class="form-control" value="<%= character.zodiac %>">
+        </div>
+      </div>
+      <div class="form-row mb-3">
+        <div class="col">
+          <label for="hometown" class="card-info-label">Hometown</label>
+          <input type="text" id="hometown" name="hometown" class="form-control" value="<%= character.hometown %>">
+        </div>
+        <div class="col">
+          <label for="education" class="card-info-label">Education</label>
+          <input type="text" id="education" name="education" class="form-control" value="<%= character.education %>">
+        </div>
+        <div class="col">
+          <label for="occupation" class="card-info-label">Occupation</label>
+          <input type="text" id="occupation" name="occupation" class="form-control" value="<%= character.occupation %>">
+        </div>
+      </div>
+      <div class="form-row mb-3">
+        <div class="col">
+          <label for="sexuality" class="card-info-label">Sexuality</label>
+          <input type="text" id="sexuality" name="sexuality" class="form-control" value="<%= character.sexuality %>">
+        </div>
+        <div class="col">
+          <label for="pronouns" class="card-info-label">Pronouns</label>
+          <input type="text" id="pronouns" name="pronouns" class="form-control" value="<%= character.pronouns %>">
+        </div>
+        <div class="col">
+          <label for="languages" class="card-info-label">Languages</label>
+          <input type="text" id="languages" name="languages" class="form-control" value="<%= character.languages %>">
+        </div>
+        <div class="col">
+          <label for="religion" class="card-info-label">Religion</label>
+          <input type="text" id="religion" name="religion" class="form-control" value="<%= character.religion %>">
+        </div>
+      </div>
+      <!-- Team/Role -->
+      <div class="form-row mb-3">
+        <div class="col">
+          <label for="role" class="card-info-label">Role</label>
+          <select id="role" name="role" class="form-control" required>
+            <option value="Player" <%= character.role === 'Player' ? 'selected' : '' %>>Player</option>
+            <option value="Staff" <%= character.role === 'Staff' ? 'selected' : '' %>>Staff</option>
+            <option value="Civilian" <%= character.role === 'Civilian' ? 'selected' : '' %>>Civilian</option>
+          </select>
+        </div>
+        <div class="col">
+          <label for="teamId" class="card-info-label">Team</label>
+          <select id="teamId" name="teamId" class="form-control">
+            <option value="">No Team</option>
+            <% if (typeof teams !== 'undefined' && teams.length > 0) { %>
+              <% teams.forEach(team => { %>
+                <option value="<%= team.id %>" <%= character.teamId == team.id ? 'selected' : '' %>><%= team.name %></option>
+              <% }); %>
+            <% } %>
+          </select>
+        </div>
+        <div class="col">
+          <label for="position" class="card-info-label">Position</label>
+          <input type="text" id="position" name="position" class="form-control" value="<%= character.position %>">
+        </div>
+        <div class="col">
+          <label for="jerseyNumber" class="card-info-label">Jersey #</label>
+          <input type="number" id="jerseyNumber" name="jerseyNumber" class="form-control" min="0" value="<%= character.jerseyNumber %>">
+        </div>
+      </div>
+      <!-- Appearance -->
+      <div class="form-group mb-3">
+        <label for="appearance" class="card-info-label">Appearance</label>
+        <textarea id="appearance" name="appearance" class="form-control" rows="2"><%= character.appearance %></textarea>
+      </div>
+      <!-- Personality -->
+      <div class="form-group mb-3">
+        <label for="personality" class="card-info-label">Personality</label>
+        <textarea id="personality" name="personality" class="form-control" rows="2"><%= character.personality %></textarea>
+      </div>
+      <!-- Stats -->
+      <div class="form-row mb-3">
+        <div class="col">
+          <label for="likes" class="card-info-label">Likes</label>
+          <input type="text" id="likes" name="likes" class="form-control" value="<%= character.likes %>">
+        </div>
+        <div class="col">
+          <label for="dislikes" class="card-info-label">Dislikes</label>
+          <input type="text" id="dislikes" name="dislikes" class="form-control" value="<%= character.dislikes %>">
+        </div>
+        <div class="col">
+          <label for="fears" class="card-info-label">Fears</label>
+          <input type="text" id="fears" name="fears" class="form-control" value="<%= character.fears %>">
+        </div>
+        <div class="col">
+          <label for="goals" class="card-info-label">Goals</label>
+          <input type="text" id="goals" name="goals" class="form-control" value="<%= character.goals %>">
+        </div>
+      </div>
+      <div class="form-row mb-3">
+        <div class="col">
+          <label for="strengths" class="card-info-label">Strengths</label>
+          <input type="text" id="strengths" name="strengths" class="form-control" value="<%= character.strengths %>">
+        </div>
+        <div class="col">
+          <label for="weaknesses" class="card-info-label">Weaknesses</label>
+          <input type="text" id="weaknesses" name="weaknesses" class="form-control" value="<%= character.weaknesses %>">
+        </div>
+      </div>
+      <!-- Favorites -->
+      <div class="form-row mb-3">
+        <div class="col">
+          <label for="favFood" class="card-info-label">Favorite Food</label>
+          <input type="text" id="favFood" name="favFood" class="form-control" value="<%= character.favFood %>">
+        </div>
+        <div class="col">
+          <label for="favMusic" class="card-info-label">Favorite Music</label>
+          <input type="text" id="favMusic" name="favMusic" class="form-control" value="<%= character.favMusic %>">
+        </div>
+        <div class="col">
+          <label for="favMovies" class="card-info-label">Favorite Movies</label>
+          <input type="text" id="favMovies" name="favMovies" class="form-control" value="<%= character.favMovies %>">
+        </div>
+        <div class="col">
+          <label for="favColor" class="card-info-label">Favorite Color</label>
+          <input type="text" id="favColor" name="favColor" class="form-control" value="<%= character.favColor %>">
+        </div>
+        <div class="col">
+          <label for="favSports" class="card-info-label">Favorite Sports</label>
+          <input type="text" id="favSports" name="favSports" class="form-control" value="<%= character.favSports %>">
+        </div>
+      </div>
+      <!-- Inspiration -->
+      <div class="form-group mb-3">
+        <label for="inspiration" class="card-info-label">Inspiration</label>
+        <textarea id="inspiration" name="inspiration" class="form-control" rows="2"><%= character.inspiration %></textarea>
+      </div>
+      <!-- Bio -->
+      <div class="form-group mb-3">
+        <label for="shortBio" class="card-info-label">Short Bio</label>
+        <textarea id="shortBio" name="shortBio" class="form-control" rows="2" maxlength="200"><%= character.shortBio %></textarea>
+      </div>
+      <div class="form-group mb-3">
+        <label for="bio" class="card-info-label">Full Bio</label>
+        <div id="bio-editor" style="height: 200px;"><%= character.bio %></div>
+        <input type="hidden" id="bio" name="bio" value="<%= character.bio %>">
+      </div>
+      <!-- Faceclaim, Banner, Sidebar, Spotify, Quote -->
+      <div class="form-row mb-3">
+        <div class="col">
+          <label for="faceclaim" class="card-info-label">Faceclaim</label>
+          <input type="text" id="faceclaim" name="faceclaim" class="form-control" value="<%= character.faceclaim %>">
+        </div>
+        <div class="col">
+          <label for="bannerUrl" class="card-info-label">Banner Image URL</label>
+          <input type="url" id="bannerUrl" name="bannerUrl" class="form-control" value="<%= character.bannerUrl %>">
+        </div>
+        <div class="col">
+          <label for="sidebarUrl" class="card-info-label">Sidebar Image URL</label>
+          <input type="url" id="sidebarUrl" name="sidebarUrl" class="form-control" value="<%= character.sidebarUrl %>">
+        </div>
+      </div>
+      <div class="form-group mb-3">
+        <label for="avatarUrl" class="card-info-label">Avatar URL</label>
+        <input type="url" id="avatarUrl" name="avatarUrl" class="form-control" value="<%= character.avatarUrl %>">
+      </div>
+      <div class="form-group mb-3">
+        <label for="spotifyEmbed" class="card-info-label">Spotify Embed (iframe or link)</label>
+        <textarea id="spotifyEmbed" name="spotifyEmbed" class="form-control" rows="2"><%= character.spotifyEmbed %></textarea>
+      </div>
+      <div class="form-group mb-3">
+        <label for="quote" class="card-info-label">Quote</label>
+        <textarea id="quote" name="quote" class="form-control" rows="2"><%= character.quote %></textarea>
+      </div>
+
+      <div class="form-row justify-content-between align-items-center mt-4">
+        <button type="submit" class="btn btn-primary btn-create">Save Changes</button>
+        <a href="/characters/<%= character.id %>" class="btn btn-secondary ml-2">Cancel</a>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+<script>
+  var quill = new Quill('#bio-editor', {
+    theme: 'snow'
+  });
+  document.querySelector('.ql-container').classList.add('my-quill-theme');
+  // Set initial content if editing
+  quill.root.innerHTML = document.getElementById('bio').value;
+
+  // On form submit, update hidden input with HTML
+  document.querySelector('form').onsubmit = function() {
+    document.getElementById('bio').value = quill.root.innerHTML;
+  };
+</script>

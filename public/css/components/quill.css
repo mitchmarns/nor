@@ -1,0 +1,41 @@
+.ql-toolbar.ql-snow {
+  background: var(--navbar-bg);
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  border-color: var(--border);
+  color: var(--lighttext);
+}
+
+.ql-container.ql-snow {
+  background: var(--card-bg);
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
+  border-color: var(--border);
+  color: var(--lighttext);
+  font-family: var(--mainfont);
+  min-height: 200px;
+}
+
+.ql-editor {
+  color: var(--lighttext);
+  font-family: var(--mainfont);
+  font-size: 1rem;
+  min-height: 200px;
+  border: 2px solid var(--border) !important;
+  border-radius: 0 0 var(--radius-md) var(--radius-md); 
+  background: var(--card-bg) !important;
+}
+
+.ql-toolbar.ql-snow button,
+.ql-toolbar.ql-snow .ql-picker-label,
+.ql-toolbar.ql-snow .ql-picker-item {
+  color: var(--darktext) !important;
+  background: transparent !important;
+  border: none !important;
+}
+
+.ql-toolbar.ql-snow button:hover,
+.ql-toolbar.ql-snow .ql-picker-label:hover,
+.ql-toolbar.ql-snow .ql-picker-item:hover {
+  color: var(--accent1) !important;
+  background: var(--accent3) !important;
+  border-radius: 4px !important;
+}

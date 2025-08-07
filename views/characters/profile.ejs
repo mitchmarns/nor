@@ -1,0 +1,323 @@
+<!-- Name Banner -->
+<div class="name-banner">
+  <div class="background">
+    <img src="<%= character.bannerUrl %>" alt="banner background" />
+  </div>
+  <div class="name"><%= character.name %></div>
+</div>
+
+<!-- Character Tabs -->
+<section id="tab-container">
+      <div class="tabs">
+        <button class="tab active" data-tab="stats">stats</button>
+        <button class="tab" data-tab="bio">biography</button>
+        <button class="tab" data-tab="connections">connections</button>
+        <button class="tab" data-tab="instagram">pictures</button>
+      </div>
+    </section>
+
+    <div class="content-wrapper">
+      <!-- Sidebar -->
+      <div class="sidebarborder">
+        <div class="sidebar">
+          <div class="over">
+            <div class="p"><%= character.quote || '—' %></div>
+          </div>
+          <div class="under">
+            <img src="<%= character.sidebarUrl || character.avatarUrl %>" alt="<%= character.name %>" onerror="this.onerror=null; this.src='/img/default-character.png';" />
+          </div>
+        </div>
+        <div class="spotify-embed">
+          <h3>Listen on Spotify</h3>
+          <% if(character.spotifyEmbed) { %>
+            <%- character.spotifyEmbed %>
+          <% } else { %>
+            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/5mm62IZlGuynlpW83VELAE?utm_source=generator&theme=0" width="100%" height="152" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+          <% } %>
+        </div>
+      </div>
+
+      <!-- Tab Content -->
+       <div class="tab-content active" id="stats">
+        <div class="character-info">
+          <div id="info-container">
+            <div class="info-section basics">
+              <h2>Basics</h2>
+              <div class="info-item"><span class="label">Nickname:</span> <span class="value"><%= character.nickname || '—' %></span></div>
+              <div class="info-item"><span class="label">Age:</span> <span class="value"><%= character.age || '—' %></span></div>
+              <div class="info-item"><span class="label">Gender:</span> <span class="value"><%= character.gender || '—' %></span></div>
+              <div class="info-item"><span class="label">Birthday:</span> <span class="value"><%= character.birthday || '—' %></span></div>
+              <div class="info-item"><span class="label">Zodiac:</span> <span class="value"><%= character.zodiac || '—' %></span></div>
+              <div class="info-item"><span class="label">Hometown:</span> <span class="value"><%= character.hometown || '—' %></span></div>
+              <div class="info-item"><span class="label">Education:</span> <span class="value"><%= character.education || '—' %></span></div>
+              <div class="info-item"><span class="label">Occupation:</span> <span class="value"><%= character.occupation || character.role || '—' %></span></div>
+              <div class="info-item"><span class="label">Sexuality:</span> <span class="value"><%= character.sexuality || '—' %></span></div>
+              <div class="info-item"><span class="label">Pronouns:</span> <span class="value"><%= character.pronouns || '—' %></span></div>
+              <div class="info-item"><span class="label">Languages:</span> <span class="value"><%= character.languages || '—' %></span></div>
+              <div class="info-item"><span class="label">Religion:</span> <span class="value"><%= character.religion || '—' %></span></div>
+              <% if (character.faceclaim) { %>
+                <div class="info-item"><span class="label">Faceclaim:</span> <span class="value"><%= character.faceclaim %></span></div>
+              <% } %>
+              <% if (character.role === 'Player' || character.role === 'Staff') { %>
+                <div class="info-item"><span class="label">Team:</span>
+                  <span class="value">
+                    <% if (team) { %>
+                      <a href="/teams/<%= team.id %>"><%= team.name %></a>
+                    <% } else { %>
+                      —
+                    <% } %>
+                  </span>
+                </div>
+                <div class="info-item"><span class="label">Position:</span> <span class="value"><%= character.position || '—' %></span></div>
+                <% if (character.role === 'Player') { %>
+                  <div class="info-item"><span class="label">Jersey #:</span> <span class="value"><%= character.jerseyNumber || '—' %></span></div>
+                <% } %>
+              <% } %>
+            </div>
+            <div class="info-section personality">
+              <h2>Personality</h2>
+              <div class="info-item"><span class="label">Traits:</span> <span class="value"><%= character.personality || '—' %></span></div>
+              <div class="info-item"><span class="label">Likes:</span> <span class="value"><%= character.likes || '—' %></span></div>
+              <div class="info-item"><span class="label">Dislikes:</span> <span class="value"><%= character.dislikes || '—' %></span></div>
+              <div class="info-item"><span class="label">Fears:</span> <span class="value"><%= character.fears || '—' %></span></div>
+              <div class="info-item"><span class="label">Goals:</span> <span class="value"><%= character.goals || '—' %></span></div>
+              <div class="info-item"><span class="label">Strengths:</span> <span class="value"><%= character.strengths || '—' %></span></div>
+              <div class="info-item"><span class="label">Weaknesses:</span> <span class="value"><%= character.weaknesses || '—' %></span></div>
+            </div>
+            <div class="info-section favorites">
+              <h2>Favorites</h2>
+              <div class="info-item"><span class="label">Food:</span> <span class="value"><%= character.favFood || '—' %></span></div>
+              <div class="info-item"><span class="label">Music:</span> <span class="value"><%= character.favMusic || '—' %></span></div>
+              <div class="info-item"><span class="label">Movies:</span> <span class="value"><%= character.favMovies || '—' %></span></div>
+              <div class="info-item"><span class="label">Color:</span> <span class="value"><%= character.favColor || '—' %></span></div>
+              <div class="info-item"><span class="label">Sports:</span> <span class="value"><%= character.favSports || '—' %></span></div>
+            </div>
+            <div class="info-section inspiration">
+              <h2>Inspiration</h2>
+              <div class="info-item"><span class="label">Characters:</span> <span class="value"><%= character.inspiration || '—' %></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-content" id="bio">
+        <div class="biocon">
+          <div class="bio-section mt-4">
+            <h3 class="mb-2">BIO</h3>
+            <div class="bio-content"><%- character.bio || 'No biography available.' %></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-content" id="connections">
+        <% if (isOwner) { %>
+          <button class="btn btn-primary mb-3" id="add-connection-btn">
+            <i class="ph ph-user-plus"></i> Add Connection
+          </button>
+        <% } %>
+        <div class="connections-list">
+          <% if (character.connections && character.connections.length) { %>
+            <% character.connections.forEach(function(conn) { %>
+              <div class="connection-card">
+                <!-- Relationship Header -->
+                <a href="/connections/<%= conn.id %>" class="connection-header-link">
+                  <div class="connection-header">
+                    <strong><%= character.name %></strong>
+                    <span class="connection-arrow">⇄</span>
+                    <strong>
+                      <%= conn.connectedCharacter ? conn.connectedCharacter.name : 'Unknown' %>
+                    </strong>
+                  </div>
+                </a>
+                <img class="connection-avatar" src="<%= conn.connectedCharacter && conn.connectedCharacter.avatarUrl ? conn.connectedCharacter.avatarUrl : '/img/default-character.png' %>" alt="<%= conn.connectedCharacter ? conn.connectedCharacter.name : 'Unknown' %>" onerror="this.onerror=null; this.src='/img/default-character.png';">
+                <div class="connection-info">
+                  <p class="connection-type"><%= conn.relationship %></p>
+                  <% if (conn.details) { %>
+                    <p class="connection-details"><%= conn.details %></p>
+                  <% } %>
+                </div>
+              </div>
+            <% }) %>
+          <% } else { %>
+            <span class="no-content-message">No connections listed.</span>
+          <% } %>
+        </div>
+
+      <div id="add-connection-modal" class="modal">
+        <div class="modal-content">
+          <span class="close" id="close-add-connection">&times;</span>
+          <h3>Add Connection</h3>
+          <form id="add-connection-form" method="POST" action="/characters/<%= character.id %>/connections/add">
+            <div class="form-group">
+              <label for="connectedCharacterId">Connect to Character</label>
+              <select id="connectedCharacterId" name="connectedCharacterId" class="form-control" required>
+                <option value="">Select a character</option>
+                <% allCharacters.forEach(function(char) { %>
+                  <option value="<%= char.id %>"><%= char.name %></option>
+                <% }) %>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="relationship">Relationship</label>
+              <input type="text" id="relationship" name="relationship" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="details">Details (optional)</label>
+              <textarea id="details" name="details" class="form-control"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Connection</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="tab-content" id="instagram">
+        <div id="igheader">PICTURES</div> 
+        <div class="instagram-buttons">
+          <% if (isOwner) { %>
+            <button class="edit-media-btn" data-target="gallery" title="Add image to gallery">
+              <i class="ph ph-camera-plus"></i>
+            </button>
+          <% } %>
+        </div>
+        <p class="help-text">Click on an image to view it in full size.</p>
+        <div id="instagram-gallery">
+          <% if (character.gallery && character.gallery.length) { %>
+            <div class="gallery-grid">
+              <% character.gallery.forEach(function(img) { %>
+                <div class="gallery-item">
+                  <img src="<%= img.url %>" alt="<%= img.caption || character.name %>">
+                  <% if (img.caption) { %>
+                    <div class="gallery-caption"><%= img.caption %></div>
+                  <% } %>
+                </div>
+              <% }) %>
+            </div>
+          <% } else { %>
+            <img src="/img/default-character.png" alt="No images available" onerror="this.onerror=null; this.src='/img/default-character.png';">
+          <% } %>
+        </div>
+        <!-- Add Image Modal -->
+         <div id="add-image-modal" class="modal">
+          <div class="modal-content">
+            <span class="close" id="close-add-image">&times;</span>
+            <h3>Add Image to Gallery</h3>
+            <form id="add-image-form" method="POST" action="/characters/<%= character.id %>/gallery/add">
+              <div class="form-group">
+                <label for="imgUrl">Image URL</label>
+                <input type="url" id="imgUrl" name="imgUrl" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label for="imgCaption">Caption (optional)</label>
+                <input type="text" id="imgCaption" name="imgCaption" class="form-control">
+              </div>
+              <button type="submit" class="btn btn-primary">Add Image</button>
+            </form>
+          </div>
+        </div>
+        <div id="image-view-modal" class="modal">
+          <div class="modal-content" style="max-width: 90vw; max-height: 90vh; display: flex; flex-direction: column; align-items: center;">
+            <span class="close" id="close-image-view" style="align-self: flex-end; font-size:2rem; cursor:pointer;">&times;</span>
+            <img id="modal-full-image" src="" alt="Full Image" style="max-width: 100%; max-height: 80vh; border-radius: 8px;">
+            <div id="modal-image-caption" style="margin-top: 10px; color: var(--darktext); text-align: center;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <div class="d-flex gap-3 mt-4" style="margin-left: 33%;">
+  <% if (isOwner) { %>
+    <a href="/characters/<%= character.id %>/edit" class="btn btn-secondary">Edit Character</a>
+  <% } %>
+  <a href="/characters" class="btn btn-outline">Back to Characters</a>
+</div>
+  </main>
+
+  <script>
+    // Tab Switching Logic
+    document.addEventListener('DOMContentLoaded', () => {
+      // Initialize text toolbar
+      if (typeof initializeTextToolbar === 'function') {
+        initializeTextToolbar();
+      }
+      
+      const tabs = document.querySelectorAll('.tab');
+      const tabContents = document.querySelectorAll('.tab-content');
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          tabs.forEach(t => t.classList.remove('active'));
+          tabContents.forEach(content => content.classList.remove('active'));
+          tab.classList.add('active');
+          const targetTab = tab.getAttribute('data-tab');
+          document.getElementById(targetTab).classList.add('active');
+        });
+      });
+
+      // Popup Modal functionality
+        const addImageBtn = document.querySelector('.edit-media-btn');
+        const addImageModal = document.getElementById('add-image-modal');
+        const closeAddImage = document.getElementById('close-add-image');
+
+        if (addImageBtn && addImageModal && closeAddImage) {
+          addImageBtn.addEventListener('click', () => {
+            addImageModal.style.display = 'block';
+          });
+          closeAddImage.addEventListener('click', () => {
+            addImageModal.style.display = 'none';
+          });
+          window.addEventListener('click', (event) => {
+            if (event.target === addImageModal) {
+              addImageModal.style.display = 'none';
+            }
+          });
+        }
+
+      const galleryImages = document.querySelectorAll('.gallery-item img');
+      const imageViewModal = document.getElementById('image-view-modal');
+      const modalFullImage = document.getElementById('modal-full-image');
+      const modalImageCaption = document.getElementById('modal-image-caption');
+      const closeImageView = document.getElementById('close-image-view');
+
+      galleryImages.forEach(img => {
+        img.addEventListener('click', () => {
+          modalFullImage.src = img.src;
+          // Get caption from sibling .gallery-caption if exists
+          const caption = img.parentElement.querySelector('.gallery-caption');
+          modalImageCaption.textContent = caption ? caption.textContent : '';
+          imageViewModal.style.display = 'block';
+        });
+      });
+
+      closeImageView.addEventListener('click', () => {
+      imageViewModal.style.display = 'none';
+      modalFullImage.src = '';
+      modalImageCaption.textContent = '';
+    });
+
+    window.addEventListener('click', (event) => {
+      if (event.target === imageViewModal) {
+        imageViewModal.style.display = 'none';
+        modalFullImage.src = '';
+        modalImageCaption.textContent = '';
+      }
+    });
+      });
+
+    const addConnBtn = document.getElementById('add-connection-btn');
+    const addConnModal = document.getElementById('add-connection-modal');
+    const closeAddConn = document.getElementById('close-add-connection');
+
+    if (addConnBtn && addConnModal && closeAddConn) {
+      addConnBtn.addEventListener('click', () => {
+        addConnModal.style.display = 'block';
+      });
+      closeAddConn.addEventListener('click', () => {
+        addConnModal.style.display = 'none';
+      });
+      window.addEventListener('click', (event) => {
+        if (event.target === addConnModal) {
+          addConnModal.style.display = 'none';
+        }
+      });
+    }
+</script>

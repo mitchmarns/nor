@@ -1,0 +1,145 @@
+:root {
+  /* Colors */
+  --bg: #2a2b2a; 
+  --card-bg: #3a3b3a; 
+  --navbar-bg: #EBEBEB;
+  --overlay: rgba(42, 43, 42, 0.85); 
+  --shadow: #1e1f1e;
+  --border: #3a3b3a; 
+  
+  /* Gradient Colors */
+  --gradient1: rgba(125, 145, 190, 0.8); 
+  --gradient2: rgba(144, 173, 198, 0.8);
+  --gradient3: rgba(173, 186, 217, 0.8);
+  --gradient4: rgba(190, 165, 195, 0.6); 
+  --gradient-hover: linear-gradient(135deg, var(--gradient1), var(--gradient2), var(--gradient4));
+  
+  --graypicture: grayscale(40%) contrast(105%) sepia(3%); 
+  
+  /* Text Colors */
+  --header: #4a5568; 
+  --header-hover: #2d3748; 
+  --lighttext: #f0f2f5; 
+  --darktext: #2d3748; 
+  --muted-text: #718096; 
+  
+  /* Accent Colors - Harmonized */
+  --accent1: #b3aac2; 
+  --accent2: #9cbfbc; 
+  --accent3: #a2afc0; 
+  --accent4: #d1c2ab; 
+  
+  /* State Colors */
+  --success: #68d391; 
+  --success-bg: rgba(104, 211, 145, 0.1);
+  --danger: #fc8181; 
+  --danger-bg: rgba(252, 129, 129, 0.1);
+  --warning: #f6e05e; 
+  --warning-bg: rgba(246, 224, 94, 0.1);
+  --info: #5badea; 
+  --info-bg: rgba(91, 173, 234, 0.1);
+
+  /* Spacing */
+  --spacing-xxs: 2px;
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 32px;
+  --spacing-xl: 48px; 
+  --spacing-2xl: 64px;
+  --spacing-3xl: 96px; 
+
+  /* Typography */
+  --mainfont: 'proxima-nova', system-ui, sans-serif; 
+  --decorfont: 'industry-inc-base', sans-serif;
+  --monofont: 'SFMono-Regular', Consolas, monospace; 
+
+  /* Font Weights */
+  --light: 300;
+  --regular: 400;
+  --medium: 500;
+  --semibold: 600;
+  --bold: 700;
+
+  /* Font Size */
+  --text-6xl: 3.5rem; 
+  --text-5xl: 3rem;
+  --text-4xl: 2.5rem;
+  --text-3xl: 2rem;
+  --text-2xl: 1.625rem;
+  --text-xl: 1.375rem;
+  --text-lg: 1.125rem;
+  --text-base: 1rem;
+  --text-sm: 0.875rem;
+  --text-xs: 0.75rem;
+
+   /* Line Height */
+  --leading-none: 1; 
+  --leading-tight: 1.25;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.75; 
+
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-round: 50%;
+
+  /* Transitions */
+  --transition-fast: 0.3s ease-in-out;
+  --transition-medium: 0.5s ease-in-out;
+  --transition-slow: 1s ease-in-out;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 5px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 8px 20px rgba(0, 0, 0, 0.3);
+  --shadow-colored: 0 4px 20px rgba(125, 145, 190, 0.15);
+  --shadow-hover: 0 8px 25px rgba(125, 145, 190, 0.2);
+
+  /* Z-indices */
+  --z-backdrop: 10;
+  --z-modal: 20;
+  --z-dropdown: 30;
+  --z-tooltip: 40;
+  
+  /* Container Width */
+  --container-sm: 640px;
+  --container-md: 768px;
+  --container-lg: 1024px;
+  --container-xl: 1280px;
+  
+  /* Opacity levels */
+  --opacity-0: 0;
+  --opacity-25: 0.25;
+  --opacity-50: 0.5;
+  --opacity-75: 0.75;
+  --opacity-100: 1;
+
+  /* Glassmorphism effects */
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  --backdrop-blur: blur(10px);
+
+  /* Animation curves */
+  --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-sharp: cubic-bezier(0.4, 0, 0.6, 1);
+
+  /* Additional utility variables */
+  --border-width: 1px;
+  --border-width-thick: 2px;
+  --focus-ring: 0 0 0 3px rgba(90, 128, 149, 0.3);
+  
+  /* Content max-widths */
+  --content-width-sm: 640px;
+  --content-width-md: 768px;
+  --content-width-lg: 1024px;
+  --content-width-xl: 1280px;
+  
+  /* Aspect ratios */
+  --aspect-square: 1 / 1;
+  --aspect-video: 16 / 9;
+  --aspect-photo: 4 / 3;
+}

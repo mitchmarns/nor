@@ -1,0 +1,36 @@
+<div class="container">
+  <h1 class="page-title text-center mb-4">Characters</h1>
+  <div class="text-center mt-4">
+    <a href="/characters/create" class="btn btn-success">Create New Character</a>
+  </div>
+  <% if (characters && characters.length > 0) { %>
+    <div class="character-list">
+      <% characters.forEach(character => { %>
+        <div class="character-card">
+          <div class="character-image">
+            <% if (character.avatarUrl) { %>
+              <img src="<%= character.avatarUrl %>" alt="<%= character.name %>" class="character-avatar">
+            <% } else { %>
+              <div class="character-avatar" style="background:#555;display:flex;align-items:center;justify-content:center;color:#eee;">
+                <%= character.name.charAt(0).toUpperCase() %>
+              </div>
+            <% } %>
+          </div>
+          <h2><%= character.name %></h2>
+          <p><strong>Age:</strong> <%= character.age || '—' %></p>
+          <p><strong>Position:</strong> <%= character.position || '—' %></p>
+          <p><strong>Team:</strong>
+            <% if (character.Team) { %>
+              <a href="/teams/<%= character.Team.id %>"><%= character.Team.name %></a>
+            <% } else { %>
+              Not specified
+            <% } %>
+          </p>
+          <a href="/characters/<%= character.id %>" class="btn btn-primary">View Profile</a>
+        </div>
+      <% }); %>
+    </div>
+  <% } else { %>
+    <p class="text-center">No characters found.</p>
+  <% } %>
+</div>
